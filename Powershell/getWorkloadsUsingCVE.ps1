@@ -16,7 +16,6 @@ $api_key = Get-Content -Path ..\api_key.txt
 $dsm_url = Get-Content -Path ..\dsm_url.txt
 $expand = 'all' #you can change this see https://automation.deepsecurity.trendmicro.com
 $urlSearch = "https://$dsm_url/api/computers?expand=$expand"
-$hostFile = ".\ProtectedHosts.csv"
 
 # Headers to use for all REST queries
 $headers = @{
