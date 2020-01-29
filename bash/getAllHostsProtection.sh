@@ -1,6 +1,6 @@
-'2020-01-28
-'Created by Stefaan Van Hoornick - BeNeLux Hybrid Cloud Security SE
-'You can freely use and adapt this code, no support will be given on it.
+#2020-01-28
+#Created by Stefaan Van Hoornick - BeNeLux Hybrid Cloud Security SE
+#You can freely use and adapt this code, no support will be given on it.
 
 DSM_URL="https://"`cat ../dsm_url.txt`
 API_KEY=`cat ../api_key.txt`
