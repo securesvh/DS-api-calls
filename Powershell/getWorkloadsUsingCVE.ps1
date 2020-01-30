@@ -1,5 +1,4 @@
 #2020-01-28
-#Created by Stefaan Van Hoornick - BeNeLux Hybrid Cloud Security SE
 #You can freely use and adapt this code, no support will be given on it.
 
 #CVE to search for
