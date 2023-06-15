@@ -26,7 +26,7 @@ if (!(Test-Path $hostFile)) {
   }
 
 # Create headers in CSV file ($hostFile)
-Add-Content -Path $hostFile -Value "HOSTNAME,PLATFORM,AGENTSTATUS,AGENTVERSION,POLICY_ID,ANTIMALWARESTATE,RTS_ID,BM_ENABLED,BM_ACTION,PML_ENABLED,PML_ACTION,AMSI_ENABLED,AMSI_ACTION"
+Add-Content -Path $hostFile -Value "HOSTNAME,PLATFORM,AGENTSTATUS,AGENTVERSION,POLICY_ID,ANTIMALWARESTATE,RTS_ID,RTS_NAME,BM_ENABLED,BM_ACTION,PML_ENABLED,PML_ACTION,AMSI_ENABLED,AMSI_ACTION"
 
 # Make the API request
 $computers = (Invoke-RestMethod -Uri $urlSearch -Method get -Headers $headers ).computers
@@ -42,8 +42,8 @@ Foreach($item in $computers){
     }
     Foreach($itemamc in $AntiMalwareConfigurations){
       if ($($itemamc.ID) -eq $($item.antiMalware.realTimeScanConfigurationID)){
-        Write-Output "$($item.hostName),$($item.platform),$($item.computerStatus.agentStatus),$($item.agentVersion),$($item.policyID),$($item.antiMalware.state),$($item.antiMalware.realTimeScanConfigurationID),$($itemamc.behaviorMonitoringEnabled),$($itemamc.scanActionForBehaviorMonitoring),$($itemamc.machineLearningEnabled),$($itemamc.scanActionForMachineLearning),$($itemamc.amsiScanEnabled),$($itemamc.scanActionForAmsi)"
-        Add-Content -Path $hostFile -Value "$($item.hostName),$($item.platform),$($item.computerStatus.agentStatus),$($item.agentVersion),$($item.policyID),$($item.antiMalware.state),$($item.antiMalware.realTimeScanConfigurationID),$($itemamc.behaviorMonitoringEnabled),$($itemamc.scanActionForBehaviorMonitoring),$($itemamc.machineLearningEnabled),$($itemamc.scanActionForMachineLearning),$($itemamc.amsiScanEnabled),$($itemamc.scanActionForAmsi)"
+        Write-Output "$($item.hostName),$($item.platform),$($item.computerStatus.agentStatus),$($item.agentVersion),$($item.policyID),$($item.antiMalware.state),$($item.antiMalware.realTimeScanConfigurationID),$($itemamc.name),$($itemamc.behaviorMonitoringEnabled),$($itemamc.scanActionForBehaviorMonitoring),$($itemamc.machineLearningEnabled),$($itemamc.scanActionForMachineLearning),$($itemamc.amsiScanEnabled),$($itemamc.scanActionForAmsi)"
+        Add-Content -Path $hostFile -Value "$($item.hostName),$($item.platform),$($item.computerStatus.agentStatus),$($item.agentVersion),$($item.policyID),$($item.antiMalware.state),$($item.antiMalware.realTimeScanConfigurationID),$($itemamc.name),$($itemamc.behaviorMonitoringEnabled),$($itemamc.scanActionForBehaviorMonitoring),$($itemamc.machineLearningEnabled),$($itemamc.scanActionForMachineLearning),$($itemamc.amsiScanEnabled),$($itemamc.scanActionForAmsi)"
       }
     }
   }
